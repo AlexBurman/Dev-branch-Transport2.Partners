@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="preadvice">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="networkType" type="xs:string" minOccurs="0"/>
+<xs:element name="addressee" type="address" minOccurs="0"/>
+<xs:element name="issueDateTime" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="itemLeg12" type="xs:string" minOccurs="0"/>
+<xs:element name="itemLeg3" type="xs:string" minOccurs="0"/>
+<xs:element name="itemWeight" type="xs:double" minOccurs="0"/>
+<xs:element name="messageRef" type="xs:string" minOccurs="0"/>
+<xs:element name="destinationOe" type="xs:string" minOccurs="0"/>
+<xs:element name="reasonForReturn" type="xs:string" minOccurs="0"/>
+<xs:element name="routingLeg12" type="xs:string" minOccurs="0"/>
+<xs:element name="sender" type="address" minOccurs="0"/>
+<xs:element name="importer" type="address" minOccurs="0"/>
+<xs:element name="representativeAcceptParty" type="address"
+minOccurs="0"/>
+<xs:element name="customsInformation" type="customs" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:complexType name="address">
+<xs:sequence>
+<xs:element name="boxNumber" type="xs:string" minOccurs="0"/>
+<xs:element name="city" type="xs:string" minOccurs="0"/>
+<xs:element name="contactName" type="xs:string" minOccurs="0"/>
+<xs:element name="contactPhone" type="xs:string" minOccurs="0"/>
+<xs:element name="country" type="xs:string" minOccurs="0"/>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+<xs:element name="street" type="xs:string" maxOccurs="unbounded"/>
+<xs:element name="streetNumber" type="xs:string" minOccurs="0"/>
+<xs:element name="zipCode" type="xs:string" minOccurs="0"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="customs">
+<xs:sequence>
+<xs:element name="totalDeclaredNetWeight" type="xs:decimal" minOccurs="0"/>
+<xs:element name="totalGoodsValue" type="xs:decimal" minOccurs="0"/>
+<xs:element name="totalGoodsValueCurrency" type="xs:string" minOccurs="0"/>
+<xs:element name="natureOfTransactionCode" type="xs:string" minOccurs="0"/>
+<xs:element minOccurs="0" name="originalItems" type="originalItems"/>
+<xs:element minOccurs="0" name="originalInvoices" type="originalInvoices"/>
+<xs:element name="insuredItem" type="xs:boolean" minOccurs="0"/>
+<xs:element name="preadviceContentPieces" type="contentPieces"
+minOccurs="0"/>
+<xs:element name="preadviceAccompanyingDocuments"
+type="accompanyingDocuments" minOccurs="0"/>
+<xs:element name="productType" type="xs:string" minOccurs="0"/>
+<xs:element name="incoterm" type="xs:string" minOccurs="0"/>
+<xs:element name="importersCustomsReference" type="xs:string"
+minOccurs="0"/>
+<xs:element name="importer" type="address" minOccurs="0"/>
+<xs:element name="representativeAcceptParty" type="address" minOccurs="0"/>
+<xs:element name="representativeAcceptPartyReference" type="xs:string"
+minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="originalItems">
+<xs:sequence>
+<xs:element maxOccurs="5" minOccurs="0" name="originalItem" nillable="true"
+type="originalItem"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="originalItem">
+<xs:sequence>
+<xs:element minOccurs="0" name="originalShipmentIdentifier" type="xs:string"/>
+<xs:element minOccurs="0" name="originalShipmentItemId" type="xs:string"/>
+<xs:element minOccurs="0" name="originalShipmentOperator" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="originalInvoices">
+<xs:sequence>
+<xs:element maxOccurs="5" minOccurs="0" name="originalInvoice" nillable="true"
+type="originalInvoice"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="originalInvoice">
+<xs:sequence>
+<xs:element minOccurs="0" name="originalInvoiceIdentifier" type="xs:string"/>
+<xs:element minOccurs="0" name="originalInvoiceNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="originalInvoiceDate" type="xs:date"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="contentPieces">
+<xs:sequence>
+<xs:element name="contentPiece" type="contentPiece" nillable="true"
+minOccurs="0" maxOccurs="20"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="contentPiece">
+<xs:sequence>
+<xs:element name="number" type="xs:int" minOccurs="0"/>
+<xs:element name="numberOfUnits" type="xs:int" minOccurs="0"/>
+<xs:element name="description" type="xs:string" minOccurs="0"/>
+<xs:element name="declaredValue" type="xs:decimal" minOccurs="0"/>
+<xs:element name="netWeight" type="xs:decimal" minOccurs="0"/>
+<xs:element name="tariffHeading" type="xs:string" minOccurs="0"/>
+<xs:element name="articleReference" type="xs:string" minOccurs="0"/>
+<xs:element name="originLocation" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="accompanyingDocuments">
+<xs:sequence>
+<xs:element name="accompanyingDocument" type="accompanying_document"
+nillable="true" minOccurs="0" maxOccurs="9"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="accompanying_document">
+<xs:sequence>
+<xs:element name="type" type="xs:string" minOccurs="0"/>
+<xs:element name="identifier" type="xs:string" minOccurs="0"/>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
